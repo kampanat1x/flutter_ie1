@@ -1,0 +1,80 @@
+import 'package:flutter/material.dart';
+
+import 'package:flutter_application_1/screen/page_1.dart';
+
+class LoginScreen extends StatefulWidget {
+  const LoginScreen({super.key});
+
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen> {
+  final formKey = GlobalKey<FormState>();
+  //Profile profile = Profile(); //52:47
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("เข้าสู่ระบบ"),
+      ),
+      body: Container(
+        child: Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Form(
+            key: formKey,
+            child: SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  SizedBox(height: 20),
+                  Text("เบอร์โทร", style: TextStyle(fontSize: 20)),
+                  TextField(
+                    /*validator: MultiValidator([
+                      RequiredValidator(errorText: "กรุณาป้อนอีเมลด้วยครับ"),
+                      EmailValidator(errorText: "รูปแบบอีเมลไม่ถูกต้อง")
+                    ]), */
+                    keyboardType: TextInputType.phone,
+                    //onSave: (String uPhone1)
+                    //onSave: (String uPhone) {
+                    //  profile.uPhone = uPhone;}
+                  ),
+                  SizedBox(height: 20),
+                  Text("รหัสผ่าน(ตัวเลข4ตัว)", style: TextStyle(fontSize: 20)),
+                  TextField(
+                    //validator: RequiredValidator(errorText: "กรุณาป้อนรหัสผ่านด้วยครับ"),
+                    obscureText: true,
+                    keyboardType: TextInputType.number,
+                    //onSave: (String uPassword1)
+                    //onSave: (String uPassword) {
+                    //  profile.upassword = uPassword;
+                    //},
+                  ),
+                  SizedBox(
+                    width: double.infinity,
+                    child: ElevatedButton(
+                        child: Text(
+                          "เข้าสู่ระบบ",
+                          style: TextStyle(fontSize: 20),
+                        ),
+                        onPressed: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                            return PageScreen1();
+                          }));
+                          //formKey.currentState.save();
+                          //print("Phone Number : ${uPhone1}");
+                          //formKey.currentState.reset()
+                        }),
+                  )
+                ],
+              ),
+            ),
+            //
+          ),
+        ),
+      ),
+    );
+  }
+}
